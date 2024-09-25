@@ -1,0 +1,36 @@
+default: &default
+  adapter: mysql2
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  primary:
+  <<: *default
+  username: hosting
+  password: h1234  
+  host: 127.0.0.1
+  port: 3306
+  database: RoR
+
+test:
+  primary: 
+  <<: *default
+  username: hosting
+  password: h1234  
+  database: RoR_test
+
+development:
+  secundary:
+  <<: *default
+  username: hosting
+  password: h1234  
+  host: 127.0.0.1
+  port: 3306
+  database: Datos_estudiantes
+
+test:
+ secundary:
+  <<: *default
+  username: hosting
+  password: h1234  
+  database: Datos_estudiantes_test
